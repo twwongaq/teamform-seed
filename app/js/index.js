@@ -61,7 +61,8 @@ angular.module('teamform-index-app', ['firebase'])
         if ($scope.logined) {
             firebase.auth().signOut().then(function () {
                 // Sign-out successful.
-                $scope.$apply($scope.logined=false);
+                $scope.$apply($scope.logined = false);
+                $scope.$apply($scope.fb = false);
             }, function (error) {
                 // An error happened.
             });
@@ -99,7 +100,7 @@ angular.module('teamform-index-app', ['firebase'])
     }
 
     $scope.refreshEvents = function () {
-        var ref = firebase.database().ref("events/");
+        var ref = firebase.database().ref("event/");
 
         // Link and sync a firebase object
        /* $scope.selection = [];
