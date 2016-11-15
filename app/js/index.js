@@ -81,6 +81,14 @@ angular.module('teamform-index-app', ['firebase'])
         }
     }
 
+    $scope.btn_list = function (eventId) {
+        if (eventId !== '') {
+            var url = "team.html?q=" + eventId;
+            window.location.href = url;
+            //return false;
+        }
+    }
+
     $scope.btn_member = function() {
         var val = $scope.eventID;
         if (val !== '') {
@@ -91,7 +99,7 @@ angular.module('teamform-index-app', ['firebase'])
     }
 
     $scope.refreshEvents = function () {
-        var ref = firebase.database().ref("event/");
+        var ref = firebase.database().ref("events/");
 
         // Link and sync a firebase object
        /* $scope.selection = [];
