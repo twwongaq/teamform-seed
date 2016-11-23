@@ -88,11 +88,14 @@ angular.module('teamform-team-app', ['firebase'])
 
 		        var newData = {
 		            'size': $scope.param.currentTeamSize,
-		            'teamMembers': $scope.param.teamMembers,
-		            'priority': $scope.param.priority
-		            //,'$$hashkey': $scope.param.$$hashkey
+		            'priority': $scope.param.priority,
+		            'teamMembers': {}
 		        };
-
+		        $.each($scope.param.teamMembers, function (i, obj) {
+		            //$scope.test += i + " " + val;
+		            //$scope.test += obj.$id + " " ;
+		            newData.teamMembers[i]={ "id": obj.id, "uid": obj.uid, "name": obj.name };
+		        });
 		        var refPath = "event/" + getURLParameter("q") + "/team/" + teamID;
 		        var ref = firebase.database().ref(refPath);
 
