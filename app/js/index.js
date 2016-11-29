@@ -22,6 +22,7 @@ angular.module('teamform-index-app', ['firebase'])
                 "name": $scope.username
             }
             if ($scope.username == null) { $scope.$apply($scope.fb = false); $scope.$apply($scope.username = user.email); } else { $scope.$apply($scope.fb = true); };
+            $scope.loadFunc();
         } else {
             // No user is signed in.
         }
@@ -34,6 +35,7 @@ angular.module('teamform-index-app', ['firebase'])
                 // ...
                 $scope.$apply($scope.username = result.user.displayName);
                 $scope.$apply($scope.logined = true);
+                $scope.currentUid = result.user.uid;
             // The signed-in user info.
                 
         }).catch(function (error) {
@@ -201,10 +203,10 @@ angular.module('teamform-index-app', ['firebase'])
 
 
                 }
-
-                $scope.$apply(); // force to refresh
+                
+                $scope.$apply($scope.loaded = true); // force to refresh
             });
     }
-    if ($scope.uid != "") { $scope.loadFunc(); }
+    $scope.loadFunc();
     $scope.refreshEvents(); // call to refresh teams...
 }]);

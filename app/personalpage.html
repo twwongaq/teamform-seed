@@ -75,7 +75,7 @@
         <!--Personal Data -->
         <div>
           <h2> Personal Data</h2>
-          <form ng-show="uid==user.uid">
+          <form ng-show="(uid==user.uid)&&loaded">
             <div class="jumbotron" >
               <p> Describe Who You Are</p>
             <textarea class="form-control" rows="3" style="max-width: 80%;" ng-model="info.intro"></textarea>
@@ -133,7 +133,7 @@
                  <input type="submit" value="Confirm" ng-click="btn_save();"><br ><br >
                  </div>
                 </form>
-            <div class="panel panel-success" ng-show="info!==null">
+            <div class="panel panel-success" ng-show="(uid!=currentUid)&&(info!==null)">
                 <div class="panel-heading">
                     {{info.name}}
                 </div>
