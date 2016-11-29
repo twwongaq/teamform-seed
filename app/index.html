@@ -158,6 +158,10 @@
               <div class="panel-body">{{e.admin.param.desc}}</div>
               <div class="panel-footer">
                   <button type="button" class="btn btn-primary" ng-click="btn_enter(e.$id);">Enter</button>
+                  <button class="btn btn-primary" type="button" ng-click="e.admin.param.likes = e.admin.param.likes+1; events.$save(e);">
+                    <span class="glyphicon glyphicon-thumbs-up"></span> Likes
+                    <span class="badge"> {{e.admin.param.likes}}</span> 
+                  </button>
               </div>
           </div>
         <hr class="featurette-divider" ng-show="logined">

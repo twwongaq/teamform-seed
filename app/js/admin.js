@@ -43,6 +43,7 @@ angular.module('teamform-admin-app', ['firebase'])
 				$scope.param.minTeamSize = 1;
 			}
 			
+			$scope.param.likes = 0;
 			// Enable the UI when the data is successfully loaded and synchornized
 			$('#admin_page_controller').show(); 				
 		}) 
