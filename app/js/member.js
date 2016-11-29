@@ -27,7 +27,7 @@ angular.module('teamform-member-app', ['firebase'])
 	    if (user) {
 	        // User is signed in.
 	        $scope.userName = user.displayName;
-	        $scope.uid = user.uid;
+	        $scope.userID = user.uid;
 	    } else {
 	        // No user is signed in.
 	    }
@@ -70,7 +70,7 @@ angular.module('teamform-member-app', ['firebase'])
 			var newData = {				
 				'name': userName,
 				'selection': $scope.selection,
-				'uid': $scope.uid
+				'uid': userID
 			};
 			
 			var refPath = "event/" + getURLParameter("q") + "/member/" + userID;

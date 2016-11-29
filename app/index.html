@@ -152,6 +152,7 @@
           <div class="panel panel-success" ng-show="logined" ng-repeat="e in events">
               <div class="panel-heading">
                   {{e.$id}}
+                  <span>( Team size: {{e.admin.param.minTeamSize}} - {{e.admin.param.maxTeamSize}} )</span>
                   <span class="glyphicon glyphicon-remove pull-right" ng-show="!fb" ng-click="events.$remove(e);"></span>
               </div>
               <div class="panel-body">{{e.admin.param.desc}}</div>
