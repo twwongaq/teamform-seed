@@ -28,7 +28,7 @@
       <script src="js/site.js"></script>
 
    </head>
-   <body ng-controller="MemberCtrl">
+   <body ng-controller="MemberCtrl" style="background:#E0ECF8">
 
    <a href="index.html"><button id="btn_admin" type="button" class="btn btn-primary" >Back to homepage</button></a>
    <br>
@@ -39,13 +39,13 @@
        <div id="member_page_controller">
          <div class="row">
             <div class="col-md-2 col-xs-2"></div>
-            <div class="col-md-8 col-xs-8 panel">
+            <div class="col-md-8 col-xs-8 panel" style="padding: 20px 20px 20px 20px">
                <form class="form-horizontal">
 
                   <!-- Form group UserID -->
                   <div class="form-group">
                      <label for="inputUserID" class="col-sm-3 control-label">User ID</label>
-                     <div class="col-sm-5 help-block">
+                     <div class="col-sm-5 help-block" style="text-align: left">
                         <span ng-model="userID">{{userID}}</span>
                      </div>
                      <div class="col-sm-4">
@@ -63,7 +63,7 @@
                   </div>
 				   </form>
 
-               <div class="row text-left">
+               <div class="text-left">
                   <h3>Your team preference:</h3>
                   <div ng-repeat="team in teams">
                      <div class="checkbox">

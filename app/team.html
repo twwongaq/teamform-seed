@@ -28,7 +28,7 @@
       <script src="js/site.js"></script>
 
    </head>
-   <body>
+   <body style="background:#E0ECF8">
 
     <a href="index.html">
    <button id="btn_admin" type="button" class="btn btn-primary" >
@@ -45,7 +45,7 @@
 
             <div class="col-md-2 col-xs-2"></div>
 
-            <div class="col-md-6 col-xs-6 text-left panel">
+            <div class="col-md-6 col-xs-6 text-left panel" style="padding: 20px 20px 20px 20px">
 
 
 
@@ -63,13 +63,10 @@
 							<input type="text" class="form-control" id="inputTeamName" placeholder="Enter your team name" ng-model="param.teamName">
 						 </div>
 
-						<div class="col-md-1 col-xs-1">
+						<div class="col-md-4 col-xs-4">
 						   <button type="button" class="btn btn-primary" ng-click="saveFunc();" >Save</button>
+               <button type="button" class="btn btn-primary" ng-click="loadFunc();" >Load</button>
 						 </div>
-
-						 <div class="col-md-1 col-xs-1">
-							<button type="button" class="btn btn-primary" ng-click="loadFunc();" >Load</button>
-						</div>
 					</div>
                       <label for="inputTeamSize" class="control-label">Team Size <span class="required " ng-show="(param.currentTeamSize < range.minTeamSize) || (param.currentTeamSize > range.maxTeamSize)">*Has to be between {{range.minTeamSize}} and {{range.maxTeamSize}}</span></label>
                       <br>
