@@ -149,7 +149,9 @@
 
 
         <!-- START THE FEATURETTES -->
-          <div class="panel panel-success" ng-show="logined" ng-repeat="e in events">
+        <div class="row featurette" id="page_list">
+          <h1>Event List: </h1>
+          <div class="panel panel-success" ng-show="logined" ng-repeat="e in events | orderBy: '-admin.param.likes'">
               <div class="panel-heading">
                   {{e.$id}}
                   <span>( Team size: {{e.admin.param.minTeamSize}} - {{e.admin.param.maxTeamSize}} )</span>
@@ -164,6 +166,7 @@
                   </button>
               </div>
           </div>
+        </div>
         <hr class="featurette-divider" ng-show="logined">
 
          <div class="row featurette" id="page_about">
