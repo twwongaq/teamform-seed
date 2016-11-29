@@ -35,16 +35,18 @@
       div.lightblue {
        background-color:#F0F8FF ;
        color: black;
-       margin: 20px 0 20px 0;
+       margin: 0 10% 0 10%;
        padding: 20px;
+       border-radius: 5px;
      }
      div.lightgrey {
       background-color:#A9A9A9 ;
       color: black;
-      margin: 20px 0 20px 0;
+      margin: 0 10% 0 10%;
       padding: 20px;
+      border-radius: 5px;
     }
-     h2{font-size:250%; color:lightblue;}
+     h2{font-size:250%; color:blue;}
      p{font-size:150%;}
      </style>
 
@@ -67,17 +69,16 @@
               <div class="text-center">
 
                 <br>
-                <p ng-show="logined"><b><i>Hello {{username}} !</i></b></p>
+                <p ng-show="logined"><b><i>Welcome back {{username}} !</i></b></p>
                 <br>
               </div>
             </div>
 
         <!--Personal Data -->
-        <div>
-          <h2> Personal Data</h2>
-          <form ng-show="(uid==user.uid)&&loaded">
-            <div class="jumbotron" >
-              <p> Describe Who You Are</p>
+        <div margin="0 10% 0 10%">
+          <form ng-show="uid == user.uid">
+            <div class="lightgrey" >
+              <p> Personal description</p>
             <textarea class="form-control" rows="3" style="max-width: 80%;" ng-model="info.intro"></textarea>
             </div>
               <div class="lightblue">
@@ -129,11 +130,11 @@
 
 
 
-                 <div style="text-align: center;">
-                 <input type="submit" value="Confirm" ng-click="btn_save();"><br ><br >
+                 <div style="text-align: center; margin: 20px 0 20px 0;">
+                 <input class="btn btn-primary" type="submit" value="Confirm" ng-click="btn_save();">
                  </div>
                 </form>
-            <div class="panel panel-success" ng-show="(uid!=currentUid)&&(info!==null)">
+            <div class="panel panel-success" ng-show="info!==null">
                 <div class="panel-heading">
                     {{info.name}}
                 </div>
