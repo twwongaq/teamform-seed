@@ -68,7 +68,7 @@
 
                <div class="text-left">
                   <h3>Team List:</h3>
-                  <div class="panel panel-success" ng-show="logined" ng-repeat="team in teams | orderBy: '-clikes'" >
+                  <div class="panel panel-success" ng-show="logined" ng-repeat="team in teams | orderBy: '-likes'" >
                      <div class="panel-heading">
                         {{team.$id}}
                      </div>
@@ -78,7 +78,7 @@
                         <button type="button" class="btn btn-primary" ng-click="btn_leader(team.$id);" ng-show="fb">Request for joining</button>
                         <button class="btn btn-primary" type="button" ng-click="team.likes = team.likes+1; teams.$save(team);">
                            <span class="glyphicon glyphicon-thumbs-up"></span> Likes
-                           <span class="badge" ng-show="team.likes >= 0"> {{team.likes}}</span> 
+                           <span class="badge"> {{team.likes}}</span> 
                         </button>
                      </div>
                   </div>

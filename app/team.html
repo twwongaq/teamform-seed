@@ -76,31 +76,9 @@
                               <input type="text" class="form-control" id="inputTeamSize" placeholder="Enter your team size" ng-model="param.currentTeamSize">
                           </div>
                       </div>
+
+
                   </div>
-
-                    <div style="text-align = centre"> Looking for someone similar to you?</div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="priority"
-                                   ng-checked="param.priority"
-                                   ng-click="$apply(param.priority=!param.priority);">
-                            Totally Same !
-                        </label>
-                        <br><label>
-                            <input type="checkbox" value="priority"
-                                   ng-checked="param.priority"
-                                   ng-click="$apply(param.priority=!param.priority);">
-                            Not so Similar
-                        </label></br>
-                        <label>
-                            <input type="checkbox" value="priority"
-                                   ng-checked="param.priority"
-                                   ng-click="$apply(param.priority=!param.priority);">
-                            I'm looking for someone difference
-                        </label>
-                    </div>
-
-
                   </form>
 
 
@@ -156,7 +134,7 @@
 
 							User ID: {{t.$id}}  <br>
 							Preferred team size: <span class="badge">{{t.size}}</span> <br>
-							Current team members: {{t.teamMembers}}
+							Current team members: {{t.teamMembers}} 
 
 						</li>
 
