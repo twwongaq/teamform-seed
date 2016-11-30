@@ -36,7 +36,6 @@ angular.module('teamform-index-app', ['firebase'])
                 $scope.$apply($scope.username = result.user.displayName);
                 $scope.$apply($scope.logined = true);
                 $scope.currentUid = result.user.uid;
-                $scope.photo = result.user.photoURL?.absoluteString;
             // The signed-in user info.
 
         }).catch(function (error) {
