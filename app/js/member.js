@@ -184,7 +184,15 @@ angular.module('teamform-member-app', ['firebase'])
 			}
 		}
 	
-	
+		$scope.listOrderSame = function(){
+			$scope.$apply($scope.listOrder = "team in teams | orderBy '-same'");
+		}
+		$scope.listOrderPsy = function(){
+			$scope.$apply($scope.listOrder = "team in teams | orderBy '-psy'");
+		}
+		$scope.listOrderLikes = function(){
+			$scope.$apply($scope.listOrder = "team in teams | orderBy '-likes'");
+		}
 		$scope.teams = $firebaseArray(ref);
 		$scope.teams.$loaded()
 			.then( function(data) {

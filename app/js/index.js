@@ -135,10 +135,6 @@ angular.module('teamform-index-app', ['firebase'])
     }
    $scope.btn_save = function () {
         if ($scope.uid !== '') {
-            $scope.info.psy = 0;
-            if ($scope.info.psy1) $scope.info.psy++;
-            if ($scope.info.psy2) $scope.info.psy++;
-            if ($scope.info.psy3) $scope.info.psy++;
                 var refPath = "info/" + $scope.uid;
                 var ref = firebase.database().ref(refPath);
 

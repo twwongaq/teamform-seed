@@ -66,12 +66,43 @@
 
                <div class="text-left">
                   <h3>Team List:</h3>
-                  <button type="button" class="btn btn-primary" ng-click="listOrder == same" ng-show="fb">Orderby Aim matched</button>
-                  <button type="button" class="btn btn-primary" ng-click="listOrder == psy" ng-show="fb">Orderby Psycho test result</button>
-                  <button type="button" class="btn btn-primary" ng-click="listOrder == likes" ng-show="fb">Orderby Likes</button>
+                  <button type="button" class="btn btn-primary" ng-click="showaim = true; showpsy = false; showlikes = false" ng-show="fb">Orderby Aim matched</button>
+                  <button type="button" class="btn btn-primary" ng-click="showpsy = true; showlikes = false; showaim = false;" ng-show="fb">Orderby Psycho test result</button>
+                  <button type="button" class="btn btn-primary" ng-click="showlikes = true; showaim = false; showpsy = false;" ng-show="fb">Orderby Likes</button>
                   <br>
-                  <br>          
-                  <div class="panel panel-success" ng-show="logined" ng-repeat="team in teams | orderBy: '-listOrder'" >
+                  <br>
+
+                  <div class="panel panel-success" ng-show="showaim" ng-repeat="team in teams | orderBy: '-same'">
+                     <div class="panel-heading">
+                        {{team.$id}}
+                        <span>( Capacity status: {{team.total}} / {{team.size}} )</span>
+                     </div>
+                     <div class="panel-body">{{team.desc}}</div>
+                     <div class="panel-footer">
+                        <button type="button" class="btn btn-primary" ng-click="btn_enter(team.$id);" ng-show="!fb">Enter</button>
+                        <button type="button" class="btn btn-primary" ng-click="toggleSelection(team.$id);saveFunc(team.$id);" ng-show="fb">Request for joining</button>
+                        <button class="btn btn-primary" type="button" ng-click="team.likes = team.likes+1; teams.$save(team);">
+                           <span class="glyphicon glyphicon-thumbs-up"></span> Likes
+                           <span class="badge"> {{team.likes}}</span> 
+                        </button>
+                     </div>
+                  </div>
+                  <div class="panel panel-success" ng-show="showpsy" ng-repeat="team in teams | orderBy: '-psy'">
+                     <div class="panel-heading">
+                        {{team.$id}}
+                        <span>( Capacity status: {{team.total}} / {{team.size}} )</span>
+                     </div>
+                     <div class="panel-body">{{team.desc}}</div>
+                     <div class="panel-footer">
+                        <button type="button" class="btn btn-primary" ng-click="btn_enter(team.$id);" ng-show="!fb">Enter</button>
+                        <button type="button" class="btn btn-primary" ng-click="toggleSelection(team.$id);saveFunc(team.$id);" ng-show="fb">Request for joining</button>
+                        <button class="btn btn-primary" type="button" ng-click="team.likes = team.likes+1; teams.$save(team);">
+                           <span class="glyphicon glyphicon-thumbs-up"></span> Likes
+                           <span class="badge"> {{team.likes}}</span> 
+                        </button>
+                     </div>
+                  </div>                            
+                  <div class="panel panel-success" ng-show="showlikes" ng-repeat="team in teams | orderBy: '-likes'">
                      <div class="panel-heading">
                         {{team.$id}}
                         <span>( Capacity status: {{team.total}} / {{team.size}} )</span>
