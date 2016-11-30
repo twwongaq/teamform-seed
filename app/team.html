@@ -68,7 +68,7 @@
                         <button type="button" class="btn btn-primary" ng-click="loadFunc();" >Load</button>
 						          </div>
 					           </div>
-                     
+
                       <label for="inputTeamSize" class="control-label">Team Size <span class="required " ng-show="(param.currentTeamSize < range.minTeamSize) || (param.currentTeamSize > range.maxTeamSize)">*Has to be between {{range.minTeamSize}} and {{range.maxTeamSize}}</span></label>
                       <br>
                       <div class="row">
@@ -79,19 +79,6 @@
 
 
                   </div>
-
-
-
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="priority"
-                                   ng-checked="param.priority"
-                                   ng-click="$apply(param.priority=!param.priority);">
-                            Priority
-                        </label>
-                    </div>
-
-
                   </form>
 
 
