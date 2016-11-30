@@ -66,16 +66,16 @@
 
                <div class="text-left">
                   <h3>Team List:</h3>
-                  <button type="button" class="btn btn-primary" ng-click="showaim = true; showpsy = false; showlikes = false" ng-show="fb">Orderby Aim matched</button>
-                  <button type="button" class="btn btn-primary" ng-click="showpsy = true; showlikes = false; showaim = false;" ng-show="fb">Orderby Psycho test result</button>
-                  <button type="button" class="btn btn-primary" ng-click="showlikes = true; showaim = false; showpsy = false;" ng-show="fb">Orderby Likes</button>
+                  <button type="button" class="btn btn-primary" ng-click="showaim = true; showpsy = false; showlikes = false" ng-show="fb">Order by matched aims</button>
+                  <button type="button" class="btn btn-primary" ng-click="showpsy = true; showlikes = false; showaim = false;" ng-show="fb">Order by Psycho test result</button>
+                  <button type="button" class="btn btn-primary" ng-click="showlikes = true; showaim = false; showpsy = false;" ng-show="fb">Order by likes</button>
                   <br>
                   <br>
 
                   <div class="panel panel-success" ng-show="showaim" ng-repeat="team in teams | orderBy: '-same'">
                      <div class="panel-heading">
                         {{team.$id}}
-                        <span>( Capacity status: {{team.total}} / {{team.size}} )</span>
+                        <span>( Capacity status: {{team.total}} / {{team.size}} ) There are {{team.same}} matched aims</span>
                      </div>
                      <div class="panel-body">{{team.desc}}</div>
                      <div class="panel-footer">
@@ -90,7 +90,7 @@
                   <div class="panel panel-success" ng-show="showpsy" ng-repeat="team in teams | orderBy: '-psy'">
                      <div class="panel-heading">
                         {{team.$id}}
-                        <span>( Capacity status: {{team.total}} / {{team.size}} )</span>
+                        <span>( Capacity status: {{team.total}} / {{team.size}} ) Score of psycho result: {{team.psy}} </span>
                      </div>
                      <div class="panel-body">{{team.desc}}</div>
                      <div class="panel-footer">

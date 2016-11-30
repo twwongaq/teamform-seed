@@ -184,15 +184,6 @@ angular.module('teamform-member-app', ['firebase'])
 			}
 		}
 	
-		$scope.listOrderSame = function(){
-			$scope.$apply($scope.listOrder = "team in teams | orderBy '-same'");
-		}
-		$scope.listOrderPsy = function(){
-			$scope.$apply($scope.listOrder = "team in teams | orderBy '-psy'");
-		}
-		$scope.listOrderLikes = function(){
-			$scope.$apply($scope.listOrder = "team in teams | orderBy '-likes'");
-		}
 		$scope.teams = $firebaseArray(ref);
 		$scope.teams.$loaded()
 			.then( function(data) {
@@ -207,84 +198,11 @@ angular.module('teamform-member-app', ['firebase'])
 		$.each($scope.teams, function (i, obj) {
 		    //$scope.test += i + " " + val;
 		    //$scope.test += obj.$id + " " ;
-		    t
 		    var refPath = "info/" + user.uid;
             retrieveOnceFirebase(firebase, refPath, function (data) {
-            	$scope.team[obj.id].same=0;
-                if (data.child("major").val() != null) {
-
-                    $scope.teams[obj.id].major = data.child("major").val();
-
-
-                }
-                if($scope.teams[obj.id].major==$scope.info.major) $scope.teams[obj.id].same++;
-                if (data.child("native").val() != null) {
-
-                    $scope.teams[obj.id].native = data.child("native").val();
-
-
-
-                }
-                if($scope.teams[obj.id].native==$scope.info.native) $scope.teams[obj.id].same++;
-                if (data.child("hall").val() != null) {
-
-                    $scope.teams[obj.id].hall = data.child("hall").val();
-
-
-
-                }
-                if($scope.teams[obj.id].hall==$scope.info.hall) $scope.teams[obj.id].same++;
-                if (data.child("aim").val() != null) {
-
-                    $scope.teams[obj.id].aim = data.child("aim").val();
-
-
-
-                }
-                if($scope.teams[obj.id].aim==$scope.info.aim) $scope.teams[obj.id].same++;
-                if (data.child("intro").val() != null) {
-
-                    $scope.teams[obj.id].intro = data.child("intro").val();
-
-
-
-                }
-                if (data.child("name").val() != null) {
-
-                    $scope.teams[obj.id].name = data.child("name").val();
-
-
-
-                }
-                $scope.teams[obj.id].psy=0;
-                if (data.child("psy1").val() != null) {
-
-                    $scope.teams[obj.id].psy1 = data.child("psy1").val();
-
-
-
-                }
-                else { $scope.teams[obj.id].psy1 = false; }
-                if($scope.teams[obj.id].psy1==$scope.info.psy1) $scope.teams[obj.id].psy++;
-                if (data.child("psy2").val() != null) {
-
-                    $scope.teams[obj.id].psy2 = data.child("psy2").val();
-
-
-
-                }
-                else { $scope.teams[obj.id].psy2 = false; }
-                if($scope.teams[obj.id].psy2==$scope.info.psy2) $scope.teams[obj.id].psy++;
-                if (data.child("psy3").val() != null) {
-
-                    $scope.teams[obj.id].psy3 = data.child("psy3").val();
-
-
-
-                }
-                else { $scope.teams[obj.id].psy3 = false; }
-                if($scope.teams[obj.id].psy3==$scope.info.psy3) $scope.teams[obj.id].psy++;
-
+            	
+            	
+            	
             });
 		});	
 		
