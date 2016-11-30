@@ -133,7 +133,10 @@ angular.module('teamform-index-app', ['firebase'])
     }
    $scope.btn_save = function () {
         if ($scope.uid !== '') {
-
+            $scope.info.psy = 0;
+            if ($scope.info.psy1) $scope.info.psy++;
+            if ($scope.info.psy2) $scope.info.psy++;
+            if ($scope.info.psy3) $scope.info.psy++;
                 var refPath = "info/" + $scope.uid;
                 var ref = firebase.database().ref(refPath);
 
@@ -203,13 +206,30 @@ angular.module('teamform-index-app', ['firebase'])
 
 
                 }
-                if (data.child("psy").val() != null) {
+                if (data.child("psy1").val() != null) {
 
-                    $scope.info.psy = data.child("psy").val();
+                    $scope.info.psy1 = data.child("psy1").val();
 
 
 
                 }
+                else { $scope.info.psy1 = false; }
+                if (data.child("psy2").val() != null) {
+
+                    $scope.info.psy2 = data.child("psy2").val();
+
+
+
+                }
+                else { $scope.info.psy2 = false; }
+                if (data.child("psy3").val() != null) {
+
+                    $scope.info.psy3 = data.child("psy3").val();
+
+
+
+                }
+                else { $scope.info.psy3 = false; }
                 
                 $scope.$apply($scope.loaded = true); // force to refresh
             });
