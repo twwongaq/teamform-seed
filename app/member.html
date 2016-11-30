@@ -71,6 +71,7 @@
                   <div class="panel panel-success" ng-show="logined" ng-repeat="team in teams | orderBy: '-likes'" >
                      <div class="panel-heading">
                         {{team.$id}}
+                        <span>( Capacity status: {{team.total}} / {{team.size}} )</span>
                      </div>
                      <div class="panel-body">{{team.desc}}</div>
                      <div class="panel-footer">

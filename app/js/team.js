@@ -24,7 +24,8 @@ angular.module('teamform-team-app', ['firebase'])
 		"teamName" : '',
 		"currentTeamSize" : 0,
 		"teamMembers" : [],
-		"likes": 0
+		"likes": 0,
+		"total": 0
 	};
 		
 
@@ -89,6 +90,7 @@ angular.module('teamform-team-app', ['firebase'])
 		        var newData = {
 		            'size': $scope.param.currentTeamSize,
 		            'likes': $scope.param.likes,
+		            'total': $scope.param.total,
 		            'teamMembers': {}
 		        };
 		        $.each($scope.param.teamMembers, function (i, obj) {
@@ -157,7 +159,13 @@ angular.module('teamform-team-app', ['firebase'])
 				
 				$scope.param.likes = data.child("likes").val();
 				
-			}			
+			}
+
+			if ( data.child("total").val() != null ) {
+				
+				$scope.param.total = data.child("total").val();
+				
+			}				
 			$scope.$apply(); // force to refresh
 		});
 
@@ -172,7 +180,7 @@ angular.module('teamform-team-app', ['firebase'])
 				
 			// Not exists, and the current number of team member is less than the preferred team size
 		    $scope.param.teamMembers.push(r);
-			
+			$scope.param.total++;
 			$scope.saveFunc();
 		}
 	}
@@ -182,7 +190,7 @@ angular.module('teamform-team-app', ['firebase'])
 		var index = $scope.param.teamMembers.indexOf(member);
 		if ( index > -1 ) {
 			$scope.param.teamMembers.splice(index, 1); // remove that item
-			
+			$scope.param.total--;
 			$scope.saveFunc();
 		}
 		
