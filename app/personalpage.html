@@ -125,10 +125,10 @@
                  <div class="lightgrey">
                     <p> What kind of group are you looking for?</p>
 
-                      <input type="radio" value="gradeA" ng-model="info.aim"> Elite<br>
-                      <input type="radio" value="gradeB" ng-model="info.aim"> Work hard together !<br>
-                      <input type="radio" value="gradeC" ng-model="info.aim"> Making new friends<br>
-                      <input type="radio" value="gradeD" ng-model="info.aim"> I don't care !
+                      <input type="radio" value="A" ng-model="info.aim"> Elite<br>
+                      <input type="radio" value="B" ng-model="info.aim"> Work hard together !<br>
+                      <input type="radio" value="C" ng-model="info.aim"> Making new friends<br>
+                      <input type="radio" value="D" ng-model="info.aim"> I don't care !
 
                   </div>
 
@@ -151,6 +151,9 @@
                     {{info.name}}
                 </div>
                 <div class="panel-body">{{info.intro}}</div>
+                <div class="panel-body">I'm from {{info.major}}. I come from {{info.native}}.</div>
+                <div class="panel-body">I live in {{info.hall}}. I would like to get {{info.aim}}.</div>
+
                 <div class="panel-footer">
                 </div>
             </div>
