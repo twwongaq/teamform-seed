@@ -34,6 +34,78 @@ angular.module('teamform-member-app', ['firebase'])
 	        }else {
 	        	$scope.fb = true
 	        }
+
+	        var refPath = "info/" + user.uid;
+            retrieveOnceFirebase(firebase, refPath, function (data) {
+                if (data.child("major").val() != null) {
+
+                    $scope.info.major = data.child("major").val();
+
+
+                }
+
+                if (data.child("native").val() != null) {
+
+                    $scope.info.native = data.child("native").val();
+
+
+
+                }
+                if (data.child("hall").val() != null) {
+
+                    $scope.info.hall = data.child("hall").val();
+
+
+
+                }
+                if (data.child("aim").val() != null) {
+
+                    $scope.info.aim = data.child("aim").val();
+
+
+
+                }
+                if (data.child("intro").val() != null) {
+
+                    $scope.info.intro = data.child("intro").val();
+
+
+
+                }
+                if (data.child("name").val() != null) {
+
+                    $scope.info.name = data.child("name").val();
+
+
+
+                }
+                if (data.child("psy1").val() != null) {
+
+                    $scope.info.psy1 = data.child("psy1").val();
+
+
+
+                }
+                else { $scope.info.psy1 = false; }
+                if (data.child("psy2").val() != null) {
+
+                    $scope.info.psy2 = data.child("psy2").val();
+
+
+
+                }
+                else { $scope.info.psy2 = false; }
+                if (data.child("psy3").val() != null) {
+
+                    $scope.info.psy3 = data.child("psy3").val();
+
+
+
+                }
+                else { $scope.info.psy3 = false; }
+
+                $scope.$apply($scope.loaded = true); // force to refresh
+            });
 	    } else {
 	        // No user is signed in.
 	    }
@@ -124,7 +196,89 @@ angular.module('teamform-member-app', ['firebase'])
 				// Database connection error handling...
 				//console.error("Error:", error);
 			});
-			
+		$.each($scope.teams, function (i, obj) {
+		    //$scope.test += i + " " + val;
+		    //$scope.test += obj.$id + " " ;
+		    t
+		    var refPath = "info/" + user.uid;
+            retrieveOnceFirebase(firebase, refPath, function (data) {
+            	$scope.team[obj.id].same=0;
+                if (data.child("major").val() != null) {
+
+                    $scope.teams[obj.id].major = data.child("major").val();
+
+
+                }
+                if($scope.teams[obj.id].major==$scope.info.major) $scope.teams[obj.id].same++;
+                if (data.child("native").val() != null) {
+
+                    $scope.teams[obj.id].native = data.child("native").val();
+
+
+
+                }
+                if($scope.teams[obj.id].native==$scope.info.native) $scope.teams[obj.id].same++;
+                if (data.child("hall").val() != null) {
+
+                    $scope.teams[obj.id].hall = data.child("hall").val();
+
+
+
+                }
+                if($scope.teams[obj.id].hall==$scope.info.hall) $scope.teams[obj.id].same++;
+                if (data.child("aim").val() != null) {
+
+                    $scope.teams[obj.id].aim = data.child("aim").val();
+
+
+
+                }
+                if($scope.teams[obj.id].aim==$scope.info.aim) $scope.teams[obj.id].same++;
+                if (data.child("intro").val() != null) {
+
+                    $scope.teams[obj.id].intro = data.child("intro").val();
+
+
+
+                }
+                if (data.child("name").val() != null) {
+
+                    $scope.teams[obj.id].name = data.child("name").val();
+
+
+
+                }
+                $scope.teams[obj.id].psy=0;
+                if (data.child("psy1").val() != null) {
+
+                    $scope.teams[obj.id].psy1 = data.child("psy1").val();
+
+
+
+                }
+                else { $scope.teams[obj.id].psy1 = false; }
+                if($scope.teams[obj.id].psy1==$scope.info.psy1) $scope.teams[obj.id].psy++;
+                if (data.child("psy2").val() != null) {
+
+                    $scope.teams[obj.id].psy2 = data.child("psy2").val();
+
+
+
+                }
+                else { $scope.teams[obj.id].psy2 = false; }
+                if($scope.teams[obj.id].psy2==$scope.info.psy2) $scope.teams[obj.id].psy++;
+                if (data.child("psy3").val() != null) {
+
+                    $scope.teams[obj.id].psy3 = data.child("psy3").val();
+
+
+
+                }
+                else { $scope.teams[obj.id].psy3 = false; }
+                if($scope.teams[obj.id].psy3==$scope.info.psy3) $scope.teams[obj.id].psy++;
+
+            });
+		});	
 		
 	}
 	

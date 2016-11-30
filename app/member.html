@@ -66,7 +66,12 @@
 
                <div class="text-left">
                   <h3>Team List:</h3>
-                  <div class="panel panel-success" ng-show="logined" ng-repeat="team in teams | orderBy: '-likes'" >
+                  <button type="button" class="btn btn-primary" ng-click="listOrder == same" ng-show="fb">Orderby Aim matched</button>
+                  <button type="button" class="btn btn-primary" ng-click="listOrder == psy" ng-show="fb">Orderby Psycho test result</button>
+                  <button type="button" class="btn btn-primary" ng-click="listOrder == likes" ng-show="fb">Orderby Likes</button>
+                  <br>
+                  <br>          
+                  <div class="panel panel-success" ng-show="logined" ng-repeat="team in teams | orderBy: '-listOrder'" >
                      <div class="panel-heading">
                         {{team.$id}}
                         <span>( Capacity status: {{team.total}} / {{team.size}} )</span>
