@@ -74,8 +74,8 @@ angular.module('teamform-index-app', ['firebase'])
        window.location.href = "signin.html";
     }
 
-    $scope.btn_leader = function() {
-        var val = $scope.eventID;
+    $scope.btn_leader = function(eventId) {
+        var val = eventId;
         if (val !== '') {
             var url = "team.html?q=" + val;
             window.location.href = url;
@@ -83,8 +83,8 @@ angular.module('teamform-index-app', ['firebase'])
         }
     }
 
-    $scope.btn_member = function() {
-        var val = $scope.eventID;
+    $scope.btn_member = function(eventId) {
+        var val = eventId;
         if (val !== '') {
             var url = "member.html?q=" + val;
             window.location.href = url;
@@ -94,8 +94,7 @@ angular.module('teamform-index-app', ['firebase'])
     $scope.btn_enter = function (eventId) {
         var val = eventId;
         if (val !== '') {
-            var url;
-            if ($scope.fb) { url = "member.html?q=" + val; } else { url = "admin.html?q=" + val; };
+            var url = "admin.html?q=" + val;
             window.location.href = url;
             //return false;
         }

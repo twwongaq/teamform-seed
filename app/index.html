@@ -120,21 +120,14 @@
                     <h1>Teamform</h1>
                     <p>A real-time online team forming app for any event</p>
                     <div class="text-center">
-                      <input type="text" class="form-control" id="inputEventID" ng-model="eventID" placeholder="Enter event ID" style="text-align: center;">
                       <br>
                       <div class="alert alert-success" role="alert">
                       <p ng-show="logined" style="font-size:130%;"><i>Welcome back <b>{{username}}</b> !</i></p>
                       </div>
-                      <em>Enter a name (e.g. COMP3111-L1, COMP3111-L2 or COMP3111H) to create/join an event</em>
-                      <br>
                       <button type="button" class="btn btn-primary" ng-click="btn_admin();" ng-show="!fb">Administrator</button>
-                      <button type="button" class="btn btn-primary" ng-click="btn_leader();" ng-show="fb">Team Leader</button>
-                      <button type="button" class="btn btn-primary" ng-click="btn_member();" ng-show="fb">Member</button>
                       <button type="button" class="btn btn-primary" ng-click="btn_logout();">Logout</button>
                     </div>
                   </div>
-                  <br>
-                  <br>
                 </div>
               </div>
             </div>
@@ -151,7 +144,8 @@
         <!-- START THE FEATURETTES -->
         <div class="row featurette" id="page_list">
           <h1>Event List: </h1>
-          <div class="panel panel-success" ng-show="logined" ng-repeat="e in events | orderBy: '-admin.param.likes'">
+          <input type="text" class="form-control" id="inputEventID" ng-model="eventID" placeholder="Enter event ID" style="text-align: center;">
+          <div class="panel panel-success" ng-show="logined" ng-repeat="e in events | filter: eventID | orderBy: '-admin.param.likes'">
               <div class="panel-heading">
                   {{e.$id}}
                   <span>( Team size: {{e.admin.param.minTeamSize}} - {{e.admin.param.maxTeamSize}} )</span>
@@ -159,7 +153,9 @@
               </div>
               <div class="panel-body">{{e.admin.param.desc}}</div>
               <div class="panel-footer">
-                  <button type="button" class="btn btn-primary" ng-click="btn_enter(e.$id);">Enter</button>
+                  <button type="button" class="btn btn-primary" ng-click="btn_enter(e.$id);" ng-show="!fb">Enter</button>
+                  <button type="button" class="btn btn-primary" ng-click="btn_leader(e.$id);" ng-show="fb">Create own team</button>
+                  <button type="button" class="btn btn-primary" ng-click="btn_member(e.$id);" ng-show="fb">Join existing team</button>
                   <button class="btn btn-primary" type="button" ng-click="e.admin.param.likes = e.admin.param.likes+1; events.$save(e);">
                     <span class="glyphicon glyphicon-thumbs-up"></span> Likes
                     <span class="badge"> {{e.admin.param.likes}}</span> 
