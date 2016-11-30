@@ -58,7 +58,7 @@
                           <li><a href="#page_about">About teamform</a></li>
                           <li><a href="#page_team">Development team</a></li>
                           <li role="separator" class="divider"></li>
-                          
+
                         </ul>
                       </li>
 
@@ -82,13 +82,14 @@
                         <ul class="dropdown-menu">
                           <li><a href="personalpage.html">My Setting</a></li>
                           <li role="separator" class="divider"></li>
-                          
+
                         </ul>
                       </li>
                       <!--  My profile -->
                       <li><p style="margin-top:12px;"><span  ng-show="!logined" class="label label-danger" >Please login !</span></p></li>
 
                       <li><a  href="personalpage.html"><p ng-show="logined" ><span class="badge">{{username}}</span></p></a></li>
+                      <li><img ng-show="logined" class="img-circle" src="Myphoto.jpg" alt="Default Photo" style="width:40px; height:40px;">
 
                     </ul>
                   </div>
@@ -159,7 +160,7 @@
                   <button type="button" class="btn btn-primary" ng-click="btn_member(e.$id);" ng-show="logined && fb">Join existing team</button>
                   <button class="btn btn-primary" type="button" ng-show="logined" ng-click="e.admin.param.likes = e.admin.param.likes+1; events.$save(e);">
                     <span class="glyphicon glyphicon-thumbs-up"></span> Likes
-                    <span class="badge"> {{e.admin.param.likes}}</span> 
+                    <span class="badge"> {{e.admin.param.likes}}</span>
                   </button>
               </div>
           </div>
