@@ -52,8 +52,6 @@
                         <span ng-model="userID">{{userID}}</span>
                      </div>
                      <div class="col-sm-4">
-                        <button type="button" class="btn btn-primary" ng-click="saveFunc();" >Add/Modify</button>
-                        <button type="button" class="btn btn-primary" ng-click="loadFunc();" >Load</button>
                      </div>
                   </div>
 
@@ -76,7 +74,7 @@
                      <div class="panel-body">{{team.desc}}</div>
                      <div class="panel-footer">
                         <button type="button" class="btn btn-primary" ng-click="btn_enter(team.$id);" ng-show="!fb">Enter</button>
-                        <button type="button" class="btn btn-primary" ng-click="btn_leader(team.$id);" ng-show="fb">Request for joining</button>
+                        <button type="button" class="btn btn-primary" ng-click="toggleSelection(team.$id);saveFunc(team.$id);" ng-show="fb">Request for joining</button>
                         <button class="btn btn-primary" type="button" ng-click="team.likes = team.likes+1; teams.$save(team);">
                            <span class="glyphicon glyphicon-thumbs-up"></span> Likes
                            <span class="badge"> {{team.likes}}</span> 

@@ -19,13 +19,23 @@ angular.module('teamform-team-app', ['firebase'])
 
 	var refPath = "";
 	var eventName = getURLParameter("q");	
+	firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in.
+			$scope.$apply($scope.param.leaderID = user.uid);
+        } else {
+            // No user is signed in.
+        }
+    });
 	// TODO: implementation of MemberCtrl	
 	$scope.param = {
 		"teamName" : '',
 		"currentTeamSize" : 0,
 		"teamMembers" : [],
 		"likes": 0,
-		"total": 0
+		"total": 0,
+		"desc": '',
+		"leaderID": ''
 	};
 		
 
@@ -88,9 +98,11 @@ angular.module('teamform-team-app', ['firebase'])
 		    if (teamID !== '') {
 
 		        var newData = {
+		        	'leaderID': $scope.param.leaderID,
 		            'size': $scope.param.currentTeamSize,
 		            'likes': $scope.param.likes,
 		            'total': $scope.param.total,
+		            'desc': $scope.param.desc,
 		            'teamMembers': {}
 		        };
 		        $.each($scope.param.teamMembers, function (i, obj) {
@@ -115,18 +127,24 @@ angular.module('teamform-team-app', ['firebase'])
 
 		        });
 
+		        var leader = true;
+		        retrieveOnceFirebase(firebase, refPath, function(data) {	
+					if ( data.child("leaderID") != $scope.param.leaderID ){
+						$scope.$apply(leader = false); // force to refresh
+					}
 
 
-		        ref.set(newData, function () {
+				});
 
-		            // console.log("Success..");
+		        if ( leader ){
+			        ref.set(newData, function () {
 
-		            // Finally, go back to the front-end
-		            // window.location.href= "index.html";
-		        });
+			            // console.log("Success..");
 
-
-
+			            // Finally, go back to the front-end
+			            // window.location.href= "index.html";
+			        });
+		        }
 		    }
 		}
 		
@@ -139,34 +157,42 @@ angular.module('teamform-team-app', ['firebase'])
 		var eventName = "event/" + getURLParameter("q");
 		var refPath = eventName + "/team/" + teamID ;
 		retrieveOnceFirebase(firebase, refPath, function(data) {	
+			if ( data.child("leaderID") == $scope.param.leaderID ){
+				if ( data.child("size").val() != null ) {
+					
+					$scope.param.currentTeamSize = data.child("size").val();
+					
+					$scope.refreshViewRequestsReceived();
+									
+					
+				} 
+				
+				if ( data.child("teamMembers").val() != null ) {
+					
+					$scope.param.teamMembers = data.child("teamMembers").val();
+					
+				}
+				
+				if ( data.child("likes").val() != null ) {
+					
+					$scope.param.likes = data.child("likes").val();
+					
+				}
 
-			if ( data.child("size").val() != null ) {
-				
-				$scope.param.currentTeamSize = data.child("size").val();
-				
-				$scope.refreshViewRequestsReceived();
-								
-				
-			} 
-			
-			if ( data.child("teamMembers").val() != null ) {
-				
-				$scope.param.teamMembers = data.child("teamMembers").val();
-				
-			}
-			
-			if ( data.child("likes").val() != null ) {
-				
-				$scope.param.likes = data.child("likes").val();
-				
+				if ( data.child("total").val() != null ) {
+					
+					$scope.param.total = data.child("total").val();
+					
+				}	
+
+				if ( data.child("desc").val() != null ) {
+					
+					$scope.param.desc = data.child("desc").val();
+					
+				}				
+				$scope.$apply(); // force to refresh
 			}
 
-			if ( data.child("total").val() != null ) {
-				
-				$scope.param.total = data.child("total").val();
-				
-			}				
-			$scope.$apply(); // force to refresh
 		});
 
 	}

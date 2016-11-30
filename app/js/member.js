@@ -105,7 +105,7 @@ angular.module('teamform-member-app', ['firebase'])
 		$scope.toggleSelection = function (item) {
 			var idx = $scope.selection.indexOf(item);    
 			if (idx > -1) {
-				$scope.selection.splice(idx, 1);
+			//	$scope.selection.splice(idx, 1);
 			}
 			else {
 				$scope.selection.push(item);
