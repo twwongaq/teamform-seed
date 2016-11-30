@@ -76,12 +76,7 @@
             </div>
 
             <div  style="text-align: center; margin:20px">
-            <img class=img-circle src="Myphoto.jpg" alt="Default Photo" style="width:120px;height:120px;">
-            <form action="upload.php" method="post" enctype="multipart/form-data">
-              Select image to upload:
-              <input type="file" name="fileToUpload" id="fileToUpload">
-              <input type="submit" value="Upload Image" name="submit">
-          </form>
+            <img ng-show="logined" class=img-circle src="Myphoto.jpg" alt="Default Photo" style="width:120px;height:120px;">
             </div>
 
         <!--Personal Data -->
