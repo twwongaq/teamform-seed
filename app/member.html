@@ -67,11 +67,19 @@
 				   </form>
 
                <div class="text-left">
-                  <h3>Your team preference:</h3>
-                  <div ng-repeat="team in teams">
-                     <div class="checkbox">
-                        <label><input type="checkbox" value="{{team.$id}}" ng-checked="selection.indexOf(team.$id) > -1" ng-click="toggleSelection(team.$id)">{{team.$id}}</label>
-                        <lable>(1/5)</lable>
+                  <h3>Team List:</h3>
+                  <div class="panel panel-success" ng-show="logined" ng-repeat="team in teams | orderBy: '-clikes'" >
+                     <div class="panel-heading">
+                        {{team.$id}}
+                     </div>
+                     <div class="panel-body">{{team.desc}}</div>
+                     <div class="panel-footer">
+                        <button type="button" class="btn btn-primary" ng-click="btn_enter(team.$id);" ng-show="!fb">Enter</button>
+                        <button type="button" class="btn btn-primary" ng-click="btn_leader(team.$id);" ng-show="fb">Request for joining</button>
+                        <button class="btn btn-primary" type="button" ng-click="team.likes = team.likes+1; teams.$save(team);">
+                           <span class="glyphicon glyphicon-thumbs-up"></span> Likes
+                           <span class="badge" ng-show="team.likes >= 0"> {{team.likes}}</span> 
+                        </button>
                      </div>
                   </div>
                </div>

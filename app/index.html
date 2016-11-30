@@ -145,18 +145,18 @@
         <div class="row featurette" id="page_list">
           <h1>Event List: </h1>
           <input type="text" class="form-control" id="inputEventID" ng-model="eventID" placeholder="Enter event ID" style="text-align: center;">
-          <div class="panel panel-success" ng-show="logined" ng-repeat="e in events | filter: eventID | orderBy: '-admin.param.likes'">
+          <div class="panel panel-success" ng-repeat="e in events | filter: eventID | orderBy: '-admin.param.likes'">
               <div class="panel-heading">
                   {{e.$id}}
                   <span>( Team size: {{e.admin.param.minTeamSize}} - {{e.admin.param.maxTeamSize}} )</span>
-                  <span class="glyphicon glyphicon-remove pull-right" ng-show="!fb" ng-click="events.$remove(e);"></span>
+                  <span class="glyphicon glyphicon-remove pull-right" ng-show="logined && !fb" ng-click="events.$remove(e);"></span>
               </div>
               <div class="panel-body">{{e.admin.param.desc}}</div>
               <div class="panel-footer">
-                  <button type="button" class="btn btn-primary" ng-click="btn_enter(e.$id);" ng-show="!fb">Enter</button>
-                  <button type="button" class="btn btn-primary" ng-click="btn_leader(e.$id);" ng-show="fb">Create own team</button>
-                  <button type="button" class="btn btn-primary" ng-click="btn_member(e.$id);" ng-show="fb">Join existing team</button>
-                  <button class="btn btn-primary" type="button" ng-click="e.admin.param.likes = e.admin.param.likes+1; events.$save(e);">
+                  <button type="button" class="btn btn-primary" ng-click="btn_enter(e.$id);" ng-show="logined && !fb">Enter</button>
+                  <button type="button" class="btn btn-primary" ng-click="btn_leader(e.$id);" ng-show="logined && fb">Create own team</button>
+                  <button type="button" class="btn btn-primary" ng-click="btn_member(e.$id);" ng-show="logined && fb">Join existing team</button>
+                  <button class="btn btn-primary" type="button" ng-show="logined" ng-click="e.admin.param.likes = e.admin.param.likes+1; events.$save(e);">
                     <span class="glyphicon glyphicon-thumbs-up"></span> Likes
                     <span class="badge"> {{e.admin.param.likes}}</span> 
                   </button>

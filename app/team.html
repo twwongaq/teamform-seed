@@ -56,18 +56,19 @@
                   <div class="form-group">
 
                      <label for="inputTeamName" class="control-label">Team Name</label>
-					 <br>
+					           <br>
 
-					 <div class="row">
-						 <div class="col-md-8 col-xs-8">
-							<input type="text" class="form-control" id="inputTeamName" placeholder="Enter your team name" ng-model="param.teamName">
-						 </div>
+					           <div class="row">
+						          <div class="col-md-8 col-xs-8">
+							         <input type="text" class="form-control" id="inputTeamName" placeholder="Enter your team name" ng-model="param.teamName">
+						          </div>
 
-						<div class="col-md-4 col-xs-4">
-						   <button type="button" class="btn btn-primary" ng-click="saveFunc();" >Save</button>
-               <button type="button" class="btn btn-primary" ng-click="loadFunc();" >Load</button>
-						 </div>
-					</div>
+						          <div class="col-md-4 col-xs-4">
+						            <button type="button" class="btn btn-primary" ng-click="saveFunc();" >Save</button>
+                        <button type="button" class="btn btn-primary" ng-click="loadFunc();" >Load</button>
+						          </div>
+					           </div>
+                     
                       <label for="inputTeamSize" class="control-label">Team Size <span class="required " ng-show="(param.currentTeamSize < range.minTeamSize) || (param.currentTeamSize > range.maxTeamSize)">*Has to be between {{range.minTeamSize}} and {{range.maxTeamSize}}</span></label>
                       <br>
                       <div class="row">
