@@ -203,6 +203,13 @@ angular.module('teamform-index-app', ['firebase'])
 
 
                 }
+                if (data.child("psy").val() != null) {
+
+                    $scope.info.psy = data.child("psy").val();
+
+
+
+                }
                 
                 $scope.$apply($scope.loaded = true); // force to refresh
             });

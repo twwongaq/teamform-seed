@@ -136,9 +136,9 @@
                  <div class="lightblue">
                    <p>Small Psychological Test on positiveness!</p>
                    <p>Click if it is true</p>
-                   <input type="checkbox">1:You are happy with what you now have</br>
-                   <input type="checkbox">2:You beleive in the phrase "Blessing in disguise"</br>
-                   <input type="checkbox">3:You agree that all problems should be solvable</br>
+                   <input type="checkbox" ng-checked="info.psy==1" ng-click="$apply(info.psy=1);">1:You are happy with what you now have</br>
+                   <input type="checkbox" ng-checked="info.psy==2" ng-click="$apply(info.psy=2);">2:You beleive in the phrase "Blessing in disguise"</br>
+                   <input type="checkbox" ng-checked="info.psy==3" ng-click="$apply(info.psy=3);">3:You agree that all problems should be solvable</br>
 
                  </div>
 
