@@ -32,6 +32,9 @@
      <script src="js/site.js"></script>
 
      <style>
+     .img-circle {
+    border-radius: 50%;
+      }
       div.lightblue {
        background-color:#F0F8FF ;
        color: black;
@@ -64,8 +67,6 @@
 
            <div class="text-center">
               <h1>My Profile</h1>
-              <p style="color:red"> Still in Progress</p>
-
               <div class="text-center">
 
                 <br>
@@ -75,7 +76,7 @@
             </div>
 
             <div  style="text-align: center; margin:20px">
-            <img src="profile-icon.png" alt="Default Photo" style="width:200px;height:200px;">
+            <img class=img-circle src="Myphoto.jpg" alt="Default Photo" style="width:120px;height:120px;">
             <form action="upload.php" method="post" enctype="multipart/form-data">
               Select image to upload:
               <input type="file" name="fileToUpload" id="fileToUpload">
