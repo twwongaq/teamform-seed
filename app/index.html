@@ -144,7 +144,8 @@
         <!-- START THE FEATURETTES -->
         <div class="row featurette" id="page_list">
           <h1>Event List: </h1>
-          <input type="text" class="form-control" id="inputEventID" ng-model="eventID" placeholder="Enter event ID" style="text-align: center;">
+          <input type="text" class="form-control" id="inputEventID" ng-model="eventID" placeholder="Enter event ID to search" style="text-align: center;">
+          <br>
           <div class="panel panel-success" ng-repeat="e in events | filter: eventID | orderBy: '-admin.param.likes'">
               <div class="panel-heading">
                   {{e.$id}}
