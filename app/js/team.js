@@ -24,7 +24,7 @@ angular.module('teamform-team-app', ['firebase'])
 		"teamName" : '',
 		"currentTeamSize" : 0,
 		"teamMembers" : [],
-		"priority" : false
+		"likes": 0
 	};
 		
 
@@ -88,7 +88,7 @@ angular.module('teamform-team-app', ['firebase'])
 
 		        var newData = {
 		            'size': $scope.param.currentTeamSize,
-		            'priority': $scope.param.priority,
+		            'likes': $scope.param.likes,
 		            'teamMembers': {}
 		        };
 		        $.each($scope.param.teamMembers, function (i, obj) {
@@ -153,6 +153,11 @@ angular.module('teamform-team-app', ['firebase'])
 				
 			}
 			
+			if ( data.child("likes").val() != null ) {
+				
+				$scope.param.likes = data.child("likes").val();
+				
+			}			
 			$scope.$apply(); // force to refresh
 		});
 
