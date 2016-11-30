@@ -37,7 +37,7 @@ angular.module('teamform-index-app', ['firebase'])
                 $scope.$apply($scope.logined = true);
                 $scope.currentUid = result.user.uid;
             // The signed-in user info.
-                
+
         }).catch(function (error) {
             // Handle Errors here.
             var errorCode = error.code;
@@ -229,7 +229,7 @@ angular.module('teamform-index-app', ['firebase'])
 
                 }
                 else { $scope.info.psy3 = false; }
-                
+
                 $scope.$apply($scope.loaded = true); // force to refresh
             });
     }
